@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ButtonController : MonoBehaviour {
+
+    public static event Action OnPressed;
 
     public Transform ButtonCapsule;
 
@@ -23,5 +26,11 @@ public class ButtonController : MonoBehaviour {
     public void OnMouseUp ()
     {
         ButtonCapsule.localScale = _originalScale;
+    }
+
+    private void OnMouseUpAsButton()
+    {
+        if (OnPressed != null)
+            OnPressed();
     }
 }

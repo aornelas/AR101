@@ -46,6 +46,7 @@ public class RocketController : MonoBehaviour {
             _raised = true;
             _canvas.SetActive(true);
             LaunchButton.SetActive(true);
+            ButtonController.OnPressed += StartCountdown;
          }
       }
 
@@ -72,5 +73,10 @@ public class RocketController : MonoBehaviour {
          _raised = false;
          LaunchButton.SetActive(false);
       }
+   }
+
+   private void StartCountdown()
+   {
+      Debug.Log("Countdown started");
    }
 }
