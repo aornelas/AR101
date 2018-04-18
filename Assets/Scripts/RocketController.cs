@@ -30,6 +30,6 @@ public class RocketController : MonoBehaviour {
 
    public void OnMouseDown()
    {
-      Debug.Log("clicked!");
+      transform.Rotate(new Vector3(-90, 0, 0));
    }
 }
