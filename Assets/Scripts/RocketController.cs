@@ -27,4 +27,9 @@ public class RocketController : MonoBehaviour {
    void Update () {
 
    }
+
+   public void OnMouseDown()
+   {
+      Debug.Log("clicked!");
+   }
 }
