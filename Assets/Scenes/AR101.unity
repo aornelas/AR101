@@ -11610,7 +11610,7 @@ MonoBehaviour:
   mPreserveChildSize: 0
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/Rockets.xml
-  mExtendedTracking: 0
+  mExtendedTracking: 1
   mAspectRatio: 1.9357373
   mImageTargetType: 0
   mWidth: 0.51659906
