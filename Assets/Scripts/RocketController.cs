@@ -66,6 +66,8 @@ public class RocketController : MonoBehaviour {
 
    public void OnMouseDown()
    {
+      if (_countingDown) return;
+
       _flickAudio.Play();
       if (!_raised && !_raising) {
          _raising = true;
