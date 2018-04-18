@@ -10,10 +10,12 @@ public class RocketController : MonoBehaviour {
 
    private GameObject _canvas;
    private AudioSource _flickAudio;
+   private AudioSource _launchAudio;
    private string _rocketName;
    private bool _raised;
    private bool _raising;
    private bool _lowering;
+   private bool _countingDown;
 
    public void Start () {
       _rocketName = gameObject.name;
@@ -34,6 +36,7 @@ public class RocketController : MonoBehaviour {
 
       var audioSources = GetComponents<AudioSource>();
       _flickAudio = audioSources[0];
+      _launchAudio = audioSources[1];
    }
 
    public void Update () {
@@ -78,6 +81,14 @@ public class RocketController : MonoBehaviour {
 
    private void StartCountdown()
    {
-      Debug.Log("Countdown started");
+      if (!_countingDown) {
+         _countingDown = true;
+         _canvas.SetActive(false);
+         _launchAudio.Play();
+      } else {
+         _countingDown = false;
+         _canvas.SetActive(true);
+         _launchAudio.Stop();
+      }
    }
 }
