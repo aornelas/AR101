@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="shuttle" size="0.055880 0.108169" />
+    <ImageTarget name="ar-rockets" size="0.300000 0.231940" />
+    <ImageTarget name="rockets-of-the-world" size="0.300000 0.450000" />
+  </Tracking>
+</QCARConfig>
