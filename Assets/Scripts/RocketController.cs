@@ -5,6 +5,7 @@ public class RocketController : MonoBehaviour {
 
    public string Country;
    public float HeightMeters;
+   public GameObject LaunchButton;
    public float TiltSpeed = 3f;
 
    private GameObject _canvas;
@@ -20,6 +21,7 @@ public class RocketController : MonoBehaviour {
       var canvasObj = transform.Find ("Rocket Card");
       _canvas = canvasObj.gameObject;
       _canvas.SetActive(false);
+      LaunchButton.SetActive(false);
 
       var rocketNameObj = canvasObj.Find ("name");
       rocketNameObj.GetComponent<Text>().text = _rocketName;
@@ -43,6 +45,7 @@ public class RocketController : MonoBehaviour {
             _raising = false;
             _raised = true;
             _canvas.SetActive(true);
+            LaunchButton.SetActive(true);
          }
       }
 
@@ -67,6 +70,7 @@ public class RocketController : MonoBehaviour {
          _lowering = true;
          _raising = false;
          _raised = false;
+         LaunchButton.SetActive(false);
       }
    }
 }
