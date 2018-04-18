@@ -7,6 +7,7 @@ public class RocketController : MonoBehaviour {
    public float HeightMeters;
 
    private string _rocketName;
+   private bool _raised;
 
    public void Start () {
       _rocketName = gameObject.name;
@@ -30,6 +31,12 @@ public class RocketController : MonoBehaviour {
 
    public void OnMouseDown()
    {
-      transform.Rotate(new Vector3(-90, 0, 0));
+      if (!_raised) {
+         transform.Rotate(new Vector3(-90, 0, 0));
+         _raised = true;
+      } else {
+         transform.Rotate(new Vector3(90, 0, 0));
+         _raised = false;
+      }
    }
 }
