@@ -7,6 +7,7 @@ public class RocketController : MonoBehaviour {
    public float HeightMeters;
    public float TiltSpeed = 3f;
 
+   private GameObject _canvas;
    private string _rocketName;
    private bool _raised;
    private bool _raising;
@@ -16,6 +17,8 @@ public class RocketController : MonoBehaviour {
       _rocketName = gameObject.name;
 
       var canvasObj = transform.Find ("Rocket Card");
+      _canvas = canvasObj.gameObject;
+      _canvas.SetActive(false);
 
       var rocketNameObj = canvasObj.Find ("name");
       rocketNameObj.GetComponent<Text>().text = _rocketName;
@@ -35,7 +38,7 @@ public class RocketController : MonoBehaviour {
          } else {
             _raising = false;
             _raised = true;
-            Debug.Log("Fully raised");
+            _canvas.SetActive(true);
          }
       }
 
@@ -45,6 +48,7 @@ public class RocketController : MonoBehaviour {
                Quaternion.Slerp (transform.rotation, Quaternion.Euler (90, 0, 0), Time.deltaTime * TiltSpeed);
          } else {
             _lowering = false;
+            _canvas.SetActive(false);
          }
       }
    }
