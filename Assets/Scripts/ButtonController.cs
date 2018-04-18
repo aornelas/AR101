@@ -16,6 +16,7 @@ public class ButtonController : MonoBehaviour {
 
     public void OnMouseDown ()
     {
+        GetComponent<AudioSource>().Play();
         ButtonCapsule.localScale = _pressedScale;
     }
 
