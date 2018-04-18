@@ -6,6 +6,7 @@ public class RocketController : MonoBehaviour {
    public string Country;
    public float HeightMeters;
    public GameObject LaunchButton;
+   public GameObject ExhaustParticles;
    public float TiltSpeed = 3f;
    public float LaunchForce = 1f;
 
@@ -105,5 +106,6 @@ public class RocketController : MonoBehaviour {
    private void LaunchRocket()
    {
       _applyForceTimer = 5f;
+      ExhaustParticles.SetActive(true);
    }
 }
