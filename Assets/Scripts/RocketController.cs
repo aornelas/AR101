@@ -28,7 +28,7 @@ public class RocketController : MonoBehaviour {
 
    public void Update () {
       if (_raising) {
-         if (transform.rotation.eulerAngles.x > 0) {
+         if (transform.rotation.eulerAngles.x > 0.1f) {
             transform.rotation =
                Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * TiltSpeed);
          } else {
