@@ -11418,6 +11418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e5a2a6e7b7d4f26bca587c016dd6f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Country: USA
+  HeightMeters: 56
 --- !u!65 &778679747
 BoxCollider:
   m_ObjectHideFlags: 0
