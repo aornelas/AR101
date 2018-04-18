@@ -100,6 +100,7 @@ public class RocketController : MonoBehaviour {
          _countingDown = false;
          _canvas.SetActive(true);
          _launchAudio.Stop();
+         CancelInvoke();
       }
    }
 
