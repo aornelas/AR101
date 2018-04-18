@@ -14,6 +14,7 @@ public class RocketController : MonoBehaviour {
    private AudioSource _flickAudio;
    private AudioSource _launchAudio;
    private string _rocketName;
+   private Vector3 _launchPosition;
    private bool _raised;
    private bool _raising;
    private bool _lowering;
@@ -22,6 +23,7 @@ public class RocketController : MonoBehaviour {
 
    public void Start () {
       _rocketName = gameObject.name;
+      _launchPosition = transform.position;
 
       var canvasObj = transform.Find ("Rocket Card");
       _canvas = canvasObj.gameObject;
@@ -85,6 +87,7 @@ public class RocketController : MonoBehaviour {
          _raising = false;
          _raised = false;
          ButtonController.OnPressed -= StartCountdown;
+         ExhaustParticles.SetActive(false);
          LaunchButton.SetActive(false);
       }
    }
@@ -108,5 +111,19 @@ public class RocketController : MonoBehaviour {
    {
       _applyForceTimer = 5f;
       ExhaustParticles.SetActive(true);
+      ButtonController.OnPressed -= StartCountdown;
+      ButtonController.OnPressed += ResetRocket;
+   }
+
+   private void ResetRocket()
+   {
+      _applyForceTimer = 0f;
+      _countingDown = false;
+      GetComponent<Rigidbody>().velocity = Vector3.zero;
+      _launchAudio.Stop();
+      _canvas.SetActive(true);
+      transform.position = _launchPosition;
+      ButtonController.OnPressed -= ResetRocket;
+      ButtonController.OnPressed += StartCountdown;
    }
 }
