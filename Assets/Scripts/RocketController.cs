@@ -7,6 +7,7 @@ public class RocketController : MonoBehaviour {
    public float HeightMeters;
    public GameObject LaunchButton;
    public float TiltSpeed = 3f;
+   public float LaunchForce = 1f;
 
    private GameObject _canvas;
    private AudioSource _flickAudio;
@@ -16,6 +17,7 @@ public class RocketController : MonoBehaviour {
    private bool _raising;
    private bool _lowering;
    private bool _countingDown;
+   private float _applyForceTimer = 0f;
 
    public void Start () {
       _rocketName = gameObject.name;
@@ -62,6 +64,11 @@ public class RocketController : MonoBehaviour {
             _canvas.SetActive(false);
          }
       }
+
+      if (_applyForceTimer > 0f) {
+         GetComponent<Rigidbody>().AddForce(transform.up * LaunchForce);
+         _applyForceTimer -= Time.deltaTime;
+      }
    }
 
    public void OnMouseDown()
@@ -87,10 +94,16 @@ public class RocketController : MonoBehaviour {
          _countingDown = true;
          _canvas.SetActive(false);
          _launchAudio.Play();
+         Invoke ("LaunchRocket", 5.85f);
       } else {
          _countingDown = false;
          _canvas.SetActive(true);
          _launchAudio.Stop();
       }
+   }
+
+   private void LaunchRocket()
+   {
+      _applyForceTimer = 5f;
    }
 }
