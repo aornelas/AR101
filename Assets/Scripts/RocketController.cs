@@ -10,6 +10,7 @@ public class RocketController : MonoBehaviour {
    private string _rocketName;
    private bool _raised;
    private bool _raising;
+   private bool _lowering;
 
    public void Start () {
       _rocketName = gameObject.name;
@@ -37,13 +38,25 @@ public class RocketController : MonoBehaviour {
             Debug.Log("Fully raised");
          }
       }
+
+      if (_lowering) {
+         if (transform.rotation.eulerAngles.x < 89.9f) {
+            transform.rotation =
+               Quaternion.Slerp (transform.rotation, Quaternion.Euler (90, 0, 0), Time.deltaTime * TiltSpeed);
+         } else {
+            _lowering = false;
+         }
+      }
    }
 
    public void OnMouseDown()
    {
       if (!_raised) {
          _raising = true;
+         _lowering = false;
       } else {
+         _lowering = true;
+         _raising = false;
          _raised = false;
       }
    }
