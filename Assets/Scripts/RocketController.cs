@@ -51,7 +51,7 @@ public class RocketController : MonoBehaviour {
 
    public void OnMouseDown()
    {
-      if (!_raised) {
+      if (!_raised && !_raising) {
          _raising = true;
          _lowering = false;
       } else {
