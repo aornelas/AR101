@@ -1,16 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ButtonController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Transform ButtonCapsule;
+
+    private Vector3 _originalScale;
+    private Vector3 _pressedScale;
+
+    private const float PressedZScale = 0.04f;
+
+    public void Start () {
+        _originalScale = ButtonCapsule.localScale;
+        _pressedScale = new Vector3(_originalScale.x, _originalScale.y, PressedZScale);
+    }
+
+    public void OnMouseDown ()
+    {
+        ButtonCapsule.localScale = _pressedScale;
+    }
+
+    public void OnMouseUp ()
+    {
+        ButtonCapsule.localScale = _originalScale;
+    }
 }

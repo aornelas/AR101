@@ -40227,6 +40227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6271b984c814e428d4c6263c199008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ButtonCapsule: {fileID: 2027632712}
 --- !u!136 &2051547028
 CapsuleCollider:
   m_ObjectHideFlags: 0
