@@ -8,6 +8,7 @@ public class RocketController : MonoBehaviour {
    public float TiltSpeed = 3f;
 
    private GameObject _canvas;
+   private AudioSource _flickAudio;
    private string _rocketName;
    private bool _raised;
    private bool _raising;
@@ -28,6 +29,9 @@ public class RocketController : MonoBehaviour {
 
       var heightObj = canvasObj.Find ("height");
       heightObj.GetComponent<Text> ().text = HeightMeters + " m";
+
+      var audioSources = GetComponents<AudioSource>();
+      _flickAudio = audioSources[0];
    }
 
    public void Update () {
@@ -55,6 +59,7 @@ public class RocketController : MonoBehaviour {
 
    public void OnMouseDown()
    {
+      _flickAudio.Play();
       if (!_raised && !_raising) {
          _raising = true;
          _lowering = false;
