@@ -71,6 +71,7 @@ public class RocketController : MonoBehaviour {
          _lowering = true;
          _raising = false;
          _raised = false;
+         ButtonController.OnPressed -= StartCountdown;
          LaunchButton.SetActive(false);
       }
    }
