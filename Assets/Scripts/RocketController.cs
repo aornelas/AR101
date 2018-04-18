@@ -5,9 +5,11 @@ public class RocketController : MonoBehaviour {
 
    public string Country;
    public float HeightMeters;
+   public float TiltSpeed = 3f;
 
    private string _rocketName;
    private bool _raised;
+   private bool _raising;
 
    public void Start () {
       _rocketName = gameObject.name;
@@ -24,18 +26,18 @@ public class RocketController : MonoBehaviour {
       heightObj.GetComponent<Text> ().text = HeightMeters + " m";
    }
 
-   // Update is called once per frame
-   void Update () {
-
+   public void Update () {
+      if (_raising) {
+         transform.rotation =
+            Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * TiltSpeed);
+      }
    }
 
    public void OnMouseDown()
    {
       if (!_raised) {
-         transform.Rotate(new Vector3(-90, 0, 0));
-         _raised = true;
+         _raising = true;
       } else {
-         transform.Rotate(new Vector3(90, 0, 0));
          _raised = false;
       }
    }
