@@ -2,7 +2,9 @@
 
 A didactic Augmented Reality project to teach you the basics through an image-tracking AR app. See the [commit history](https://github.com/aornelas/AR101/commits/master) for a granular break-down of the project!
 
-Demo: https://twitter.com/andres/status/1033059821728161793
+![demo](AR101-demo.gif)
+
+More demos: https://twitter.com/andres/status/1033059821728161793
 
 ## Getting Started 
 If you want to work through this project to learn more about Unity, Augmented Reality, and game development in general, follow these steps:
